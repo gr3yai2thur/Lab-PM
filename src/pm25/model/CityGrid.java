@@ -10,8 +10,6 @@ public class CityGrid{
     public int[][] people = new int[rows][cols];
     public int[][] sickP  = new int[rows][cols];
 
-    public Random rnd = new Random();
-
     public void setPeople(int amount){
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
@@ -21,9 +19,10 @@ public class CityGrid{
     }
 
     public void setPeople(int min, int max){
+        Random rnd = new Random();
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
-                people[i][j] = rnd.nextInt(max - min + 1);
+                people[i][j] = rnd.nextInt(max - min + 1) + min;
             }
         }
     }
