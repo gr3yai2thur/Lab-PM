@@ -2,7 +2,6 @@ package pm25.ui;
 
 import java.awt.FlowLayout;
 import java.awt.Color;
-
 import javax.swing.*;
 
 import pm25.model.CityGrid;

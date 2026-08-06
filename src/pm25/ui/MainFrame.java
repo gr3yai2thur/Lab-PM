@@ -9,7 +9,7 @@ import java.awt.*;
 public class MainFrame extends JFrame {
 
     CityGrid cityGrid = new CityGrid();
-    GridPanel gridPanel = new GridPanel();
+    GridPanel gridPanel = new GridPanel(cityGrid);
     dataFileLoader loader = new dataFileLoader();
 
     public MainFrame() {
@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
     }
 
     public void installComponent() {
-        loader.loaderFile(gridPanel);
+        loader.loaderFile(cityGrid);
         gridPanel.buildTable();
         new ControlPanel(gridPanel, cityGrid);
 

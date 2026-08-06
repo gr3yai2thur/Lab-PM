@@ -14,6 +14,7 @@ public class DetailDialog extends JFrame {
         JTextArea ta = new JTextArea();
         ta.setEditable(false);
         ta.setText(String.valueOf(cityGrid.pm25[i][j]) + "\n");
+        ta.append(String.valueOf(cityGrid.people[i][j]));
 
         add(ta);
         setLocationRelativeTo(this);
