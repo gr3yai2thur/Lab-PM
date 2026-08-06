@@ -38,7 +38,7 @@ public class SetPeopleDialog extends JFrame{
     public void setRandomPeople(CityGrid cityGrid){
         JFrame randomFrame = new JFrame();
         randomFrame.setTitle("Random");
-        randomFrame.setSize(400, 150);
+        randomFrame.setSize(350, 150);
         randomFrame.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
         randomFrame.add(new JLabel("Min:"));
@@ -64,7 +64,7 @@ public class SetPeopleDialog extends JFrame{
                 cityGrid.setPeople(minValue, maxValue);
                 randomFrame.dispose();
             } catch (NumberFormatException exception) {
-                randomError.setText("Please enter number");
+                randomError.setText("Letter cant input, please enter a whole number");
             }
         });
 
@@ -101,7 +101,7 @@ public class SetPeopleDialog extends JFrame{
                 cityGrid.setPeople(value);
                 fixedFrame.dispose();
             } catch (NumberFormatException exception) {
-                fixedError.setText("Please enter number");
+                fixedError.setText("Letter cant input, please enter a whole number");
             }
         });
 

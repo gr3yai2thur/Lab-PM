@@ -32,10 +32,10 @@ public class GridPanel{
     }
 
     public void refreshPM25() {
-      for (int i = 0; i < cityGrid.rows; i++) {
-          for (int j = 0; j < cityGrid.cols; j++) {
-              buttons[i][j].setText(String.valueOf(cityGrid.pm25[i][j]));
-          }
-      }
-  }
+        for (int i = 0; i < cityGrid.rows; i++) {
+            for (int j = 0; j < cityGrid.cols; j++) {
+                buttons[i][j].setText(String.valueOf(cityGrid.pm25[i][j]));
+            }
+        }
+    }
 }
