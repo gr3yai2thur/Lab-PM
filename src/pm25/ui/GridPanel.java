@@ -11,7 +11,7 @@ public class GridPanel{
 
     JButton[][] buttons = new JButton[20][40];
     public JPanel table = new JPanel(new GridLayout(20, 40));
-    public JPanel data = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+    public JPanel data = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
     public GridPanel(CityGrid cityGrid) {
         this.cityGrid = cityGrid;

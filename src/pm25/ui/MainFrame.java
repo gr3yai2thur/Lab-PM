@@ -13,10 +13,6 @@ public class MainFrame extends JFrame {
     dataFileLoader loader = new dataFileLoader();
 
     public MainFrame() {
-        installComponent();
-    }
-
-    public void installComponent() {
         loader.loaderFile(cityGrid);
         gridPanel.buildTable();
         new ControlPanel(gridPanel, cityGrid);
