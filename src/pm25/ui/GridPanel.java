@@ -9,7 +9,7 @@ public class GridPanel{
 
     CityGrid cityGrid;
 
-    JButton[][] buttons = new JButton[20][40];
+    public JButton[][] buttons = new JButton[20][40];
     public JPanel table = new JPanel(new GridLayout(20, 40));
     public JPanel data = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
@@ -24,6 +24,12 @@ public class GridPanel{
                 final int c = j;
                 JButton btn = new JButton(String.valueOf(cityGrid.pm25[i][j]));
                 buttons[i][j] = btn;
+
+                // เอาไว้สร้าง UI button ใหม้่
+                // btn.setContentAreaFilled(false);
+                // btn.setFocusPainted(false);
+                // btn.setBorderPainted(false);
+                
                 btn.setMargin(new Insets(0, 0, 0, 0));
                 btn.addActionListener(e -> new DetailDialog(cityGrid, r, c));
                 table.add(btn);

@@ -11,7 +11,6 @@ public class MainFrame extends JFrame {
     CityGrid cityGrid = new CityGrid();
     GridPanel gridPanel = new GridPanel(cityGrid);
     dataFileLoader loader = new dataFileLoader();
-
     public MainFrame() {
         loader.loaderFile(cityGrid);
         gridPanel.buildTable();
