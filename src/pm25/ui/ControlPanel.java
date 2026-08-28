@@ -3,44 +3,52 @@ package pm25.ui;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.*;
-
 import pm25.model.CityGrid;
 
 public class ControlPanel {
+
+    //แผงควยคุมด้านล่าง
     ControlPanel(GridPanel gridPanel, CityGrid cityGrid) {
         SetPeopleDialog setPeopleDialog = new SetPeopleDialog();
         NatureRainDialog natureRainDialog = new NatureRainDialog();
         LoaderFileDialog loaderFileDialog = new LoaderFileDialog();
 
+        //ปุ่ม setPeople
         JButton setPeople = new JButton("Set People");
         setPeople.setPreferredSize(new Dimension(140, 25));
 
+        //เพิ่ม Listener
         setPeople.addActionListener(e -> {
             setPeopleDialog.choiceDialog(cityGrid, gridPanel);
         });
 
+        //ปุ่มฝนธรรมชาติ
         JButton nature = new JButton("Nature Rain");
         nature.setPreferredSize(new Dimension(140, 25));
 
+        //เพิ่ม Listener
         nature.addActionListener(e -> {
             natureRainDialog.natureDialog(cityGrid, gridPanel);
         });
 
+        //ปุ่มฝนเทียม
         JButton pseudo = new JButton("Pseudo rain(off)");
         pseudo.setPreferredSize(new Dimension(140, 25));
         
+        //เพิ่ม Listener
         pseudo.addActionListener(e -> {
-            if (!cityGrid.isPseudoOn) {
-                cityGrid.isPseudoOn = true;
+            if (!cityGrid.isPseudoOn()) {
+                cityGrid.setPseudoOn(true);
                 pseudo.setText("Pseudo rain(on)");
                 pseudo.setBackground(Color.decode("#00FF99"));
             } else {
-                cityGrid.isPseudoOn = false;
+                cityGrid.setPseudoOn(false);
                 pseudo.setText("Pseudo rain(off)");
                 pseudo.setBackground(UIManager.getColor("Button.background"));
             }
         });
 
+        //ปุ่มโหลดไฟล์ทับ
         JButton load = new JButton("Loader File");
         load.setPreferredSize(new Dimension(140, 25));
 
@@ -48,9 +56,10 @@ public class ControlPanel {
             loaderFileDialog.loaderFile(cityGrid, gridPanel);
         });
 
-        gridPanel.data.add(setPeople);
-        gridPanel.data.add(pseudo);
-        gridPanel.data.add(nature);
-        gridPanel.data.add(load);
+        //เพิ่มเข้า JPanel data
+        gridPanel.getData().add(setPeople);
+        gridPanel.getData().add(pseudo);
+        gridPanel.getData().add(nature);
+        gridPanel.getData().add(load);
     }
 }

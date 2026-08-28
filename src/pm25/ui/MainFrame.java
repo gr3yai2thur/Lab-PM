@@ -8,9 +8,9 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
 
-    CityGrid cityGrid = new CityGrid();
-    GridPanel gridPanel = new GridPanel(cityGrid);
-    dataFileLoader loader = new dataFileLoader();
+    private CityGrid cityGrid = new CityGrid();
+    private GridPanel gridPanel = new GridPanel(cityGrid);
+    private dataFileLoader loader = new dataFileLoader();
 
     public MainFrame() {
         if (loader.loaderFile(cityGrid)) {
@@ -22,17 +22,17 @@ public class MainFrame extends JFrame {
         setSize(1600, 900);
         setLayout(new BorderLayout());
 
-        gridPanel.data.setPreferredSize(new Dimension(200, 40));
+        gridPanel.getData().setPreferredSize(new Dimension(200, 40));
 
-        gridPanel.table.setBackground(Color.decode("#043f5a"));
-        gridPanel.data.setBackground(Color.decode("#89CFEF"));
+        gridPanel.getTable().setBackground(Color.decode("#043f5a"));
+        gridPanel.getData().setBackground(Color.decode("#89CFEF"));
 
-        gridPanel.table.setBorder(
+        gridPanel.getTable().setBorder(
             BorderFactory.createLineBorder(Color.decode("#000000"), 1)
         );
 
-        add(gridPanel.table, BorderLayout.CENTER);
-        add(gridPanel.data, BorderLayout.SOUTH);
+        add(gridPanel.getTable(), BorderLayout.CENTER);
+        add(gridPanel.getData(), BorderLayout.SOUTH);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(this);

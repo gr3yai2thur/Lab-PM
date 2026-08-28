@@ -61,6 +61,9 @@ public class SetPeopleDialog extends JFrame {
 
                 cityGrid.setPeople(minValue, maxValue);
                 cityGrid.setSickPercent();
+                cityGrid.setSickPeople();
+                cityGrid.setGoodPeople();
+                cityGrid.copyData();
                 gridPanel.refreshPeopleColor();
                 randomFrame.dispose();
             } catch (NumberFormatException exception) {
@@ -100,6 +103,9 @@ public class SetPeopleDialog extends JFrame {
 
                 cityGrid.setPeople(value);
                 cityGrid.setSickPercent();
+                cityGrid.setSickPeople();
+                cityGrid.setGoodPeople();
+                cityGrid.copyData();
                 gridPanel.refreshPeopleColor();
                 fixedFrame.dispose();
             } catch (NumberFormatException exception) {

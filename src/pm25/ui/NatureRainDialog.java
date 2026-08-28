@@ -19,12 +19,16 @@ public class NatureRainDialog extends JFrame {
             rain.dispose();
             cityGrid.natureRain();
             gridPanel.refreshPM25();
+            cityGrid.setSickPercent();
+            cityGrid.setSickPeople();
+            cityGrid.setGoodPeople();
             gridPanel.refreshPeopleColor();
         });
 
         no.addActionListener(e -> {
             rain.dispose();
         });
+        
         rain.add(new JLabel("Do u wanna let nature rain start?"));
         rain.add(yes);
         rain.add(no);
