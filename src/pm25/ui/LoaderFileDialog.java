@@ -6,12 +6,13 @@ import javax.swing.*;
 import pm25.io.dataFileLoader;
 import pm25.model.CityGrid;
 
-public class LoaderFileDialog extends JFrame{
+public class LoaderFileDialog extends JFrame {
     dataFileLoader file = new dataFileLoader();
 
-    public void loaderFile(CityGrid cityGrid, GridPanel gridPanel){
-        setTitle("Loader File");
-        setSize(230, 100);
+    public void loaderFile(CityGrid cityGrid, GridPanel gridPanel) {
+        getContentPane().removeAll();
+        setTitle("Load");
+        setSize(220, 100);
         setLayout(new FlowLayout());
 
         JButton yes = new JButton("Yes");
@@ -19,8 +20,9 @@ public class LoaderFileDialog extends JFrame{
 
         yes.addActionListener(e -> {
             dispose();
-            file.loaderFile(cityGrid);
-            gridPanel.refreshPM25();
+            if (file.loaderFile(cityGrid)) {
+                gridPanel.buildTable();
+            }
         });
 
         no.addActionListener(e -> {
@@ -32,6 +34,8 @@ public class LoaderFileDialog extends JFrame{
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(this);
+        revalidate();
+        repaint();
         setVisible(true);
     }
 }

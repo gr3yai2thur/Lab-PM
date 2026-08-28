@@ -6,8 +6,8 @@ import javax.swing.*;
 
 import pm25.model.CityGrid;
 
-public class SetPeopleDialog extends JFrame{
-    public void choiceDialog(CityGrid cityGrid){
+public class SetPeopleDialog extends JFrame {
+    public void choiceDialog(CityGrid cityGrid, GridPanel gridPanel) {
         JFrame choice = new JFrame();
         choice.setTitle("Start with Random?");
         choice.setSize(300, 100);
@@ -18,24 +18,22 @@ public class SetPeopleDialog extends JFrame{
 
         random.addActionListener(e -> {
             choice.dispose();
-            setRandomPeople(cityGrid);
+            setRandomPeople(cityGrid, gridPanel);
         });
 
         fixed.addActionListener(e -> {
             choice.dispose();
-            setFixedPeople(cityGrid);
+            setFixedPeople(cityGrid, gridPanel);
         });
         choice.add(new JLabel("Do u wanna start with random People?"));
         choice.add(random);
         choice.add(fixed);
-
-
         choice.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         choice.setLocationRelativeTo(this);
         choice.setVisible(true);
     }
 
-    public void setRandomPeople(CityGrid cityGrid){
+    public void setRandomPeople(CityGrid cityGrid, GridPanel gridPanel) {
         JFrame randomFrame = new JFrame();
         randomFrame.setTitle("Random");
         randomFrame.setSize(350, 150);
@@ -62,6 +60,8 @@ public class SetPeopleDialog extends JFrame{
                 }
 
                 cityGrid.setPeople(minValue, maxValue);
+                cityGrid.setSickPercent();
+                gridPanel.refreshPeopleColor();
                 randomFrame.dispose();
             } catch (NumberFormatException exception) {
                 randomError.setText("Letter cant input, please enter a whole number");
@@ -76,7 +76,7 @@ public class SetPeopleDialog extends JFrame{
         randomFrame.setVisible(true);
     }
 
-    public void setFixedPeople(CityGrid cityGrid){
+    public void setFixedPeople(CityGrid cityGrid, GridPanel gridPanel) {
         JFrame fixedFrame = new JFrame();
         fixedFrame.setTitle("Fixed");
         fixedFrame.setSize(320, 150);
@@ -99,6 +99,8 @@ public class SetPeopleDialog extends JFrame{
                 }
 
                 cityGrid.setPeople(value);
+                cityGrid.setSickPercent();
+                gridPanel.refreshPeopleColor();
                 fixedFrame.dispose();
             } catch (NumberFormatException exception) {
                 fixedError.setText("Letter cant input, please enter a whole number");

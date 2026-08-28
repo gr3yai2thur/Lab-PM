@@ -11,9 +11,11 @@ public class MainFrame extends JFrame {
     CityGrid cityGrid = new CityGrid();
     GridPanel gridPanel = new GridPanel(cityGrid);
     dataFileLoader loader = new dataFileLoader();
+
     public MainFrame() {
-        loader.loaderFile(cityGrid);
-        gridPanel.buildTable();
+        if (loader.loaderFile(cityGrid)) {
+            gridPanel.buildTable();
+        }
         new ControlPanel(gridPanel, cityGrid);
 
         setTitle("Pseudo Rain Simulator");

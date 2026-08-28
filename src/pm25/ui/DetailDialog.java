@@ -13,8 +13,13 @@ public class DetailDialog extends JFrame {
 
         JTextArea ta = new JTextArea();
         ta.setEditable(false);
-        ta.setText(String.valueOf(cityGrid.pm25[i][j]) + "\n");
-        ta.append(String.valueOf(cityGrid.people[i][j]));
+        if (cityGrid.people.get(i).get(j) == 0) {
+            ta.setText(String.valueOf("Please set people first."));
+        } else {
+            ta.setText(String.valueOf("PM2.5 Value: " + cityGrid.pm25.get(i).get(j)) + "\n");
+            ta.append(String.valueOf("People In City: " + cityGrid.people.get(i).get(j) + "\n"));
+            ta.append(String.valueOf("Sick Percent In City: " + cityGrid.sickP.get(i).get(j)) + "\n");
+        }
 
         add(ta);
         setLocationRelativeTo(this);

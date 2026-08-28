@@ -5,8 +5,8 @@ import javax.swing.*;
 
 import pm25.model.CityGrid;
 
-public class NatureRainDialog extends JFrame{
-    public void natureDialog(CityGrid cityGrid, GridPanel gridPanel){
+public class NatureRainDialog extends JFrame {
+    public void natureDialog(CityGrid cityGrid, GridPanel gridPanel) {
         JFrame rain = new JFrame();
         rain.setTitle("Nature Rain");
         rain.setSize(250, 120);
@@ -19,6 +19,7 @@ public class NatureRainDialog extends JFrame{
             rain.dispose();
             cityGrid.natureRain();
             gridPanel.refreshPM25();
+            gridPanel.refreshPeopleColor();
         });
 
         no.addActionListener(e -> {
@@ -27,15 +28,8 @@ public class NatureRainDialog extends JFrame{
         rain.add(new JLabel("Do u wanna let nature rain start?"));
         rain.add(yes);
         rain.add(no);
-
-
         rain.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         rain.setLocationRelativeTo(this);
         rain.setVisible(true);
     }
-
-    // public static void main(String[] args) {
-    //     NatureRainDialog nt = new NatureRainDialog();
-    //     nt.natureDialog(null);
-    // }
 }
