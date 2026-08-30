@@ -21,6 +21,10 @@ public class GridPanel {
         return table;
     }
 
+    public JButton getButton(int i, int j){
+        return buttons[i][j];
+    }
+
     public JPanel getData() {
         return data;
     }
@@ -78,7 +82,7 @@ public class GridPanel {
                         refreshPM25();
                         refreshColor();
                     } else {
-                        new DetailDialog(cityGrid, r, c);
+                        new DetailDialog(cityGrid, this, r, c);
                     }
                 });
                 table.add(btn);

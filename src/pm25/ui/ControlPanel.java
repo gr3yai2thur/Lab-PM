@@ -2,6 +2,8 @@ package pm25.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+
 import javax.swing.*;
 import pm25.model.CityGrid;
 
