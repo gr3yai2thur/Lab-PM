@@ -20,7 +20,6 @@ public class LoaderFileDialog extends JFrame {
         JButton yes = new JButton("Yes");
         JButton no = new JButton("No");
 
-        //เพิ่ม Listener
         yes.addActionListener(e -> {
             dispose();
             if (file.loaderFile(cityGrid)) {
@@ -28,7 +27,6 @@ public class LoaderFileDialog extends JFrame {
             }
         });
 
-        //เพิ่ม Listener
         no.addActionListener(e -> {
             dispose();
         });

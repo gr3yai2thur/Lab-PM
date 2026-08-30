@@ -24,7 +24,7 @@ public class MainFrame extends JFrame {
 
         gridPanel.getData().setPreferredSize(new Dimension(200, 40));
 
-        gridPanel.getTable().setBackground(Color.decode("#043f5a"));
+        gridPanel.getTable().setBackground(Color.decode("#89CFEF"));
         gridPanel.getData().setBackground(Color.decode("#89CFEF"));
 
         gridPanel.getTable().setBorder(

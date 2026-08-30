@@ -8,6 +8,7 @@ import pm25.model.CityGrid;
 public class GridPanel {
     private CityGrid cityGrid;
     private JButton[][] buttons;
+    private JButton pseudoButton;
     private JPanel table = new JPanel();
     private JPanel data = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
@@ -22,6 +23,15 @@ public class GridPanel {
 
     public JPanel getData() {
         return data;
+    }
+
+    public void setPseudoButton(JButton pseudoButton) {
+        this.pseudoButton = pseudoButton;
+    }
+
+    public void resetPseudoButton() {
+        pseudoButton.setText("Pseudo rain(off)");
+        pseudoButton.setBackground(UIManager.getColor("Button.background"));
     }
 
     //สร้างตารางปุ่ม
@@ -50,7 +60,27 @@ public class GridPanel {
                 
                 //แก้ข้อมูลเป็น ...
                 btn.setMargin(new Insets(0, 0, 0, 0));
-                btn.addActionListener(e -> new DetailDialog(cityGrid, r, c));
+                btn.addActionListener(e -> {
+                    if (cityGrid.isPseudoOn()) {
+                        if (cityGrid.getPeople(r, c) == 0) {
+                            new PseudoAlert();
+                            cityGrid.setPseudoOn(false);
+                            resetPseudoButton();
+                            return;
+                        }
+
+                        cityGrid.pseudoRain(r, c);
+                        cityGrid.setSickPercent();
+                        cityGrid.setSickPeople();
+                        cityGrid.setGoodPeople();
+                        cityGrid.setPseudoOn(false);
+                        resetPseudoButton();
+                        refreshPM25();
+                        refreshColor();
+                    } else {
+                        new DetailDialog(cityGrid, r, c);
+                    }
+                });
                 table.add(btn);
             }
         }
@@ -68,10 +98,10 @@ public class GridPanel {
     }
 
     //refresh สีปุ่มหลังจากทำ event ต่างๆ
-    public void refreshPeopleColor() {
+    public void refreshColor() {
         for (int i = 0; i < cityGrid.getRows(); i++) {
             for (int j = 0; j < cityGrid.getCols(); j++) {
-                buttons[i][j].setBackground(cityGrid.getPeopleColor(i, j));
+                buttons[i][j].setBackground(cityGrid.getColor(i, j));
                 buttons[i][j].setOpaque(true);
             }
         }

@@ -100,14 +100,14 @@ public class CityGrid {
         resetCopyData();
     }
 
-    //set ขนาดของ Array ตามขนาดไฟล์
+    //set ขนาดของ Array ตามขนาดไฟล์(ใน Loop)
     public void setGridSize(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
     }
 
-    //เปลี่ยนสีตามจำนวนฝุ่น
-    public Color getPeopleColor(int row, int col) {
+    //ดึงค่าสีตามจำนวนฝุ่น
+    public Color getColor(int row, int col) {
         int pmValue = pm25.get(row).get(col);
 
         if (pmValue >= 151) return Color.RED;
@@ -143,6 +143,29 @@ public class CityGrid {
                 pm25.get(i).set(j, pm25.get(i).get(j) - 50);
                 if (pm25.get(i).get(j) <= 0) {
                     pm25.get(i).set(j, 0);
+                }
+            }
+        }
+    }
+
+    //ฝนเทียม
+    public void pseudoRain(int centerRow, int centerCol) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                int distance = Math.max(Math.abs(i - centerRow), Math.abs(j - centerCol));
+                int reductionPercent = 0;
+
+                if (distance == 0) { //ช่องที่กด
+                    reductionPercent = 50;
+                } else if (distance == 1) { //ช่องรอบปุ่มที่กด
+                    reductionPercent = 25; 
+                } else if (distance == 2) { //ช่องรอบนอก
+                    reductionPercent = 10;
+                }
+
+                if (reductionPercent > 0) {
+                    int pmValue = pm25.get(i).get(j);
+                    pm25.get(i).set(j, pmValue * (100 - reductionPercent) / 100);
                 }
             }
         }

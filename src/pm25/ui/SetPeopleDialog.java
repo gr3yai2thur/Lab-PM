@@ -64,7 +64,7 @@ public class SetPeopleDialog extends JFrame {
                 cityGrid.setSickPeople();
                 cityGrid.setGoodPeople();
                 cityGrid.copyData();
-                gridPanel.refreshPeopleColor();
+                gridPanel.refreshColor();
                 randomFrame.dispose();
             } catch (NumberFormatException exception) {
                 randomError.setText("Letter cant input, please enter a whole number");
@@ -106,7 +106,7 @@ public class SetPeopleDialog extends JFrame {
                 cityGrid.setSickPeople();
                 cityGrid.setGoodPeople();
                 cityGrid.copyData();
-                gridPanel.refreshPeopleColor();
+                gridPanel.refreshColor();
                 fixedFrame.dispose();
             } catch (NumberFormatException exception) {
                 fixedError.setText("Letter cant input, please enter a whole number");

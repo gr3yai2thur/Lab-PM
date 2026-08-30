@@ -34,6 +34,7 @@ public class ControlPanel {
         //ปุ่มฝนเทียม
         JButton pseudo = new JButton("Pseudo rain(off)");
         pseudo.setPreferredSize(new Dimension(140, 25));
+        gridPanel.setPseudoButton(pseudo);
         
         //เพิ่ม Listener
         pseudo.addActionListener(e -> {

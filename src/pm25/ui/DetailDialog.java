@@ -1,7 +1,6 @@
 package pm25.ui;
 
 import pm25.model.CityGrid;
-
 import javax.swing.*;
 
 public class DetailDialog extends JFrame {

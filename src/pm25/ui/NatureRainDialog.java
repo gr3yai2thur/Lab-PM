@@ -22,7 +22,7 @@ public class NatureRainDialog extends JFrame {
             cityGrid.setSickPercent();
             cityGrid.setSickPeople();
             cityGrid.setGoodPeople();
-            gridPanel.refreshPeopleColor();
+            gridPanel.refreshColor();
         });
 
         no.addActionListener(e -> {
