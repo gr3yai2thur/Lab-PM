@@ -16,18 +16,22 @@ public class DetailDialog extends JFrame {
         setSize(560, 380);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
+
         //แผงรายละเอียด
         JTextArea ta = new JTextArea();
+
+        //รูปภาพ
         JLabel imageLabel = new JLabel();
 
         ta.setEditable(false);
         ta.setFont(new Font("Consolas", Font.BOLD, 14));
 
         if (cityGrid.getPeople(i, j) == 0) {
+            
             ta.setText(String.valueOf("Please set people first."));
         } else {
 
-            ta.setText(" ----------Before Nature/Pseudo Rain----------\n\n");
+            ta.setText(" -----------Before Nature/Pseudo Rain-----------\n\n");
             
             ta.append(String.valueOf(" PM2.5 Value: " + cityGrid.getBeforePm25(i, j)) + "\n");
             ta.append(String.valueOf(" People In City: " + cityGrid.getBeforePeople(i, j) + "\n"));
@@ -35,7 +39,7 @@ public class DetailDialog extends JFrame {
             ta.append(String.valueOf(" Sick People In City: " + cityGrid.getBeforeSickPeople(i, j)) + "\n");
             ta.append(String.valueOf(" Good Percent In City: " + cityGrid.getBeforeGoodPeople(i, j)) + "\n");
 
-            ta.append("\n ----------After Nature/Pseudo Rain----------\n\n");
+            ta.append("\n -----------After Nature/Pseudo Rain-----------\n\n");
 
             ta.append(String.valueOf(" PM2.5 Value: " + cityGrid.getPm25(i, j)) + "\n");
             ta.append(String.valueOf(" People In City: " + cityGrid.getPeople(i, j) + "\n"));
@@ -61,7 +65,6 @@ public class DetailDialog extends JFrame {
             Image scaledImage = rawImage.getScaledInstance(150, 200, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(scaledImage));
         }
-
 
         add(imageLabel, BorderLayout.WEST);
         add(ta, BorderLayout.CENTER);

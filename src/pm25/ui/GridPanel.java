@@ -64,7 +64,10 @@ public class GridPanel {
                 
                 //แก้ข้อมูลเป็น ...
                 btn.setMargin(new Insets(0, 0, 0, 0));
+
                 btn.addActionListener(e -> {
+
+                    //เช็คว่าเปิด pseudo มั้ย
                     if (cityGrid.isPseudoOn()) {
                         if (cityGrid.getPeople(r, c) == 0) {
                             new PseudoAlert();
@@ -77,8 +80,8 @@ public class GridPanel {
                         cityGrid.setSickPercent();
                         cityGrid.setSickPeople();
                         cityGrid.setGoodPeople();
-                        cityGrid.setPseudoOn(false);
-                        resetPseudoButton();
+                        // cityGrid.setPseudoOn(false);
+                        // resetPseudoButton();
                         refreshPM25();
                         refreshColor();
                     } else {
