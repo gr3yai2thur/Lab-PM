@@ -33,7 +33,7 @@ public class dataFileLoader {
                 ArrayList<Integer> row = new ArrayList<>();
                 for (int j = 0; j < msg.length; j++) {
                     try {
-                        if(Integer.parseInt(msg[j]) >= 1 && Integer.parseInt(msg[j]) <= 250){
+                        if(Integer.parseInt(msg[j]) >= 0 && Integer.parseInt(msg[j]) <= 250){
                             row.add(Integer.parseInt(msg[j]));
                         }
                         else{

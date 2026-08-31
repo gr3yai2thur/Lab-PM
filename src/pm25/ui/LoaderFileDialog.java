@@ -25,6 +25,7 @@ public class LoaderFileDialog extends JFrame {
             if (file.loaderFile(cityGrid)) {
                 gridPanel.buildTable();
             }
+            gridPanel.resetPseudoButton();
         });
 
         no.addActionListener(e -> {
