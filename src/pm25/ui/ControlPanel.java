@@ -2,9 +2,7 @@ package pm25.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
 import javax.swing.BorderFactory;
-import javax.swing.UIManager;
 import pm25.model.CityGrid;
 
 public class ControlPanel {

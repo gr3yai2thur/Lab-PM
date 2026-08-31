@@ -146,7 +146,8 @@ public class GridPanel {
     public void refreshPM25() {
         for (int i = 0; i < cityGrid.getRows(); i++) {
             for (int j = 0; j < cityGrid.getCols(); j++) {
-                buttons[i][j].setText(String.valueOf(cityGrid.getPm25(i, j)));
+                if(cityGrid.getPm25(i, j) == -1) buttons[i][j].setText("N/A");
+                else buttons[i][j].setText(String.valueOf(cityGrid.getPm25(i, j)));
             }
         }
     }

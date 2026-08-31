@@ -2,7 +2,6 @@ package pm25.ui;
 
 import pm25.io.dataFileLoader;
 import pm25.model.CityGrid;
-
 import javax.swing.*;
 import java.awt.*;
 

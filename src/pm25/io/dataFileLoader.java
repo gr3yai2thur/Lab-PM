@@ -46,6 +46,7 @@ public class dataFileLoader {
                 cityGrid.loadDataRow(row);
                 i++;
             }
+            bfr.close();
             int rows = i;
 
             cityGrid.setGridSize(rows, cols);

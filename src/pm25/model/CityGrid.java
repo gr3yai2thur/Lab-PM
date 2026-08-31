@@ -2,12 +2,14 @@ package pm25.model;
 
 import java.util.ArrayList;
 import java.util.Random;
+import pm25.ui.GridPanel;
 import java.awt.Color;
 
 public class CityGrid {
     private int rows;
     private int cols;
     private boolean isPseudoOn = false;
+    private boolean isPeopleSet = false;
     private boolean hasCopy = false;
 
     private ArrayList<ArrayList<Integer>> pm25 = new ArrayList<>();
@@ -92,6 +94,7 @@ public class CityGrid {
 
     //ล้างข้อมูลใน Array ตอนโหลดไฟล์กันข้อมูลทับ
     public void clearLoadedData() {
+        isPeopleSet = false;
         pm25.clear();
         people.clear();
         sickP.clear();
@@ -113,7 +116,7 @@ public class CityGrid {
         if (pmValue >= 151) return Color.decode("#E53935");
         else if (pmValue >= 101) return Color.decode("#FF9800");
         else if (pmValue >= 51)  return Color.decode("#FFD54F");
-        else if (pmValue >= 1) return Color.decode("#8BC34A");
+        else if (pmValue >= 0) return Color.decode("#8BC34A");
         else return Color.decode("#FFFFFF");
     }
 
@@ -124,6 +127,7 @@ public class CityGrid {
                 people.get(i).set(j, amount);
             }
         }
+        setPeopleSet(true);
     }
 
     //set จำนวนคนแบบสุ่ม
@@ -135,15 +139,19 @@ public class CityGrid {
                 people.get(i).set(j, amount);
             }
         }
+        setPeopleSet(true);
     }
 
     //ฝนธรรมชาติ
-    public void natureRain() {
+    public void natureRain(GridPanel gridPanel) { 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 pm25.get(i).set(j, pm25.get(i).get(j) - 50);
-                if (pm25.get(i).get(j) <= 0) {
+                if (pm25.get(i).get(j) <= 0  && !gridPanel.getButton(i, j).getBackground().equals(Color.decode("#FFFFFF"))) {
                     pm25.get(i).set(j, 0);
+                }
+                if(gridPanel.getButton(i, j).getBackground().equals(Color.decode("#FFFFFF"))) {
+                    pm25.get(i).set(j, -1);
                 }
             }
         }
@@ -151,8 +159,16 @@ public class CityGrid {
 
     //ฝนเทียม
     public void pseudoRain(int centerRow, int centerCol) {
+        if (pm25.get(centerRow).get(centerCol) == -1) {
+            return;
+        }
+        
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
+
+                int pmValue = pm25.get(i).get(j);
+                if(pmValue == -1) continue; // ข้ามช่องที่เป็น -1 ในพื้นที่รอบๆ
+                
                 int distance = Math.max(Math.abs(i - centerRow), Math.abs(j - centerCol));
                 int reductionPercent = 0;
 
@@ -165,8 +181,9 @@ public class CityGrid {
                 }
 
                 if (reductionPercent > 0) {
-                    int pmValue = pm25.get(i).get(j);
-                    pm25.get(i).set(j, pmValue * (100 - reductionPercent) / 100);
+                    if(pmValue >= 0){
+                        pm25.get(i).set(j, pmValue * (100 - reductionPercent) / 100);
+                    }
                 }
             }
         }
@@ -261,5 +278,13 @@ public class CityGrid {
         B4sickP.clear();
         B4sickPP.clear();
         B4goodPP.clear();
+    }
+
+    public boolean isPeopleSet() {
+        return isPeopleSet;
+    }
+
+    public void setPeopleSet(boolean status){
+        this.isPeopleSet = true;
     }
 }

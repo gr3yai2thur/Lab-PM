@@ -55,10 +55,10 @@ public class DetailDialog extends JFrame {
                 imagePath = "src\\pm25\\image\\bad.png";
             } else if (pm25 >= 51) {
                 imagePath = "src\\pm25\\image\\better.png";
-            } else if (pm25 >= 1){
+            } else if (pm25 >= 0){
                 imagePath = "src\\pm25\\image\\good.png";
             } else{
-                imagePath = "src\\pm25\\image\\notgood.png";
+                imagePath = "src\\pm25\\image\\anomaly.png";
                 ta.setFont(new Font("Consolas", Font.BOLD, 20));
                 ta.setText("--------This city is Anomaly--------");
             }

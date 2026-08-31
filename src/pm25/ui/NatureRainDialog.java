@@ -2,7 +2,6 @@ package pm25.ui;
 
 import java.awt.FlowLayout;
 import javax.swing.*;
-
 import pm25.model.CityGrid;
 
 public class NatureRainDialog extends JFrame {
@@ -17,12 +16,17 @@ public class NatureRainDialog extends JFrame {
 
         yes.addActionListener(e -> {
             rain.dispose();
-            cityGrid.natureRain();
-            gridPanel.refreshPM25();
-            cityGrid.setSickPercent();
-            cityGrid.setSickPeople();
-            cityGrid.setGoodPeople();
-            gridPanel.refreshColor();
+            if(cityGrid.isPeopleSet()){
+                cityGrid.natureRain(gridPanel);
+                gridPanel.refreshPM25();
+                cityGrid.setSickPercent();
+                cityGrid.setSickPeople();
+                cityGrid.setGoodPeople();
+                gridPanel.refreshColor();
+            }
+            else{
+                new PseudoAlert();
+            }
         });
 
         no.addActionListener(e -> {
