@@ -32,7 +32,16 @@ public class dataFileLoader {
 
                 ArrayList<Integer> row = new ArrayList<>();
                 for (int j = 0; j < msg.length; j++) {
-                    row.add(Integer.parseInt(msg[j]));
+                    try {
+                        if(Integer.parseInt(msg[j]) >= 1 && Integer.parseInt(msg[j]) <= 250){
+                            row.add(Integer.parseInt(msg[j]));
+                        }
+                        else{
+                            row.add(-1);
+                        }
+                    } catch (Exception e) {
+                        row.add(-1);
+                    }
                 }
                 cityGrid.loadDataRow(row);
                 i++;

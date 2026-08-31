@@ -26,8 +26,9 @@ public class DetailDialog extends JFrame {
         ta.setFont(new Font("Consolas", Font.BOLD, 14));
 
         if (cityGrid.getPeople(i, j) == 0) {
-            ta.setText(String.valueOf("Please set people first."));
-        } else {
+            ta.setFont(new Font("Consolas", Font.BOLD, 20));
+            ta.setText("   ----------Please set people first----------");
+        }else {
             ta.setText(" -----------Before Nature/Pseudo Rain-----------\n\n");
             
             ta.append(String.valueOf(" PM2.5 Value: " + cityGrid.getBeforePm25(i, j)) + "\n");
@@ -54,8 +55,12 @@ public class DetailDialog extends JFrame {
                 imagePath = "src\\pm25\\image\\bad.png";
             } else if (pm25 >= 51) {
                 imagePath = "src\\pm25\\image\\better.png";
-            } else {
+            } else if (pm25 >= 1){
                 imagePath = "src\\pm25\\image\\good.png";
+            } else{
+                imagePath = "src\\pm25\\image\\notgood.png";
+                ta.setFont(new Font("Consolas", Font.BOLD, 20));
+                ta.setText("--------This city is Anomaly--------");
             }
 
             Image rawImage = new ImageIcon(imagePath).getImage();

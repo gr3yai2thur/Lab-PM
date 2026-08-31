@@ -113,7 +113,8 @@ public class CityGrid {
         if (pmValue >= 151) return Color.decode("#E53935");
         else if (pmValue >= 101) return Color.decode("#FF9800");
         else if (pmValue >= 51)  return Color.decode("#FFD54F");
-        else return Color.decode("#8BC34A");
+        else if (pmValue >= 1) return Color.decode("#8BC34A");
+        else return Color.decode("#FFFFFF");
     }
 
     //set จำนวนคนแบบกำหนด

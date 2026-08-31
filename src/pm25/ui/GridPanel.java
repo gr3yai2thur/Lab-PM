@@ -53,31 +53,60 @@ public class GridPanel {
             for (int j = 0; j < cityGrid.getCols(); j++) {
                 final int r = i;
                 final int c = j;
-                JButton btn = new JButton(String.valueOf(cityGrid.getPm25(i, j))) {
-                    @Override
-                    protected void paintComponent(Graphics g) {
-                        Graphics2D g2 = (Graphics2D) g.create();
-                        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-                        // clip แล้ววาดพื้นหลัง + ตัวหนังสือ
-                        g2.setClip(new java.awt.geom.RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 10, 10));
-                        g2.setColor(getBackground());
-                        g2.fillRect(0, 0, getWidth(), getHeight());
-                        super.paintComponent(g2);
+                JButton btn;
+                if(cityGrid.getPm25(i, j) > 0){
+                    btn = new JButton(String.valueOf(cityGrid.getPm25(i, j))) {
+                        @Override
+                        protected void paintComponent(Graphics g) {
+                            Graphics2D g2 = (Graphics2D) g.create();
+                            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    
+                            // clip แล้ววาดพื้นหลัง + ตัวหนังสือ
+                            g2.setClip(new java.awt.geom.RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 10, 10));
+                            g2.setColor(getBackground());
+                            g2.fillRect(0, 0, getWidth(), getHeight());
+                            super.paintComponent(g2);
+    
+                            // reset clip แล้ววาดเส้นขอบทับบนสุด
+                            g2.setClip(null);
+                            g2.setColor(new Color(0xADADAD));
+                            g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 10, 10);
+    
+                            g2.dispose();
+                        }
+                    };
+                    btn.setBackground(UIManager.getColor("Button.background")); // สีเริ่มต้น
+                    btn.setContentAreaFilled(false);
+                    btn.setFocusPainted(false);
+                    btn.setBorderPainted(false);
+                }else{
+                    btn = new JButton("N/A") {
+                        @Override
+                        protected void paintComponent(Graphics g) {
+                            Graphics2D g2 = (Graphics2D) g.create();
+                            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    
+                            // clip แล้ววาดพื้นหลัง + ตัวหนังสือ
+                            g2.setClip(new java.awt.geom.RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 10, 10));
+                            g2.setColor(getBackground());
+                            g2.fillRect(0, 0, getWidth(), getHeight());
+                            super.paintComponent(g2);
+    
+                            // reset clip แล้ววาดเส้นขอบทับบนสุด
+                            g2.setClip(null);
+                            g2.setColor(new Color(0xADADAD));
+                            g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 10, 10);
+    
+                            g2.dispose();
+                        }
+                    };
+                    btn.setBackground(UIManager.getColor("Button.background")); // สีเริ่มต้น
+                    btn.setContentAreaFilled(false);
+                    btn.setFocusPainted(false);
+                    btn.setBorderPainted(false);
+                }
 
-                        // reset clip แล้ววาดเส้นขอบทับบนสุด
-                        g2.setClip(null);
-                        g2.setColor(new Color(0xADADAD));
-                        g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 10, 10);
-
-                        g2.dispose();
-                    }
-                };
-
-                btn.setBackground(UIManager.getColor("Button.background")); // สีเริ่มต้น
-                btn.setContentAreaFilled(false);
-                btn.setFocusPainted(false);
-                btn.setBorderPainted(false);
                 buttons[i][j] = btn;
 
                 //แก้ข้อมูลเป็น ...
