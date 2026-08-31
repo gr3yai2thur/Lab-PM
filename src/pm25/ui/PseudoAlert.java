@@ -3,7 +3,6 @@ package pm25.ui;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -18,7 +17,7 @@ public class PseudoAlert extends JFrame{
         alert.setFont(new Font("Tomaha", Font.BOLD, 16));
         alert.setHorizontalAlignment(SwingConstants.CENTER);
     
-        JButton OK = new JButton("OK");
+        RoundedButton OK = new RoundedButton("OK");
         
         OK.addActionListener(e -> {
             dispose();

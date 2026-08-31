@@ -12,8 +12,8 @@ public class NatureRainDialog extends JFrame {
         rain.setSize(250, 120);
         rain.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-        JButton yes = new JButton("Yes");
-        JButton no = new JButton("No");
+        RoundedButton yes = new RoundedButton("Yes");
+        RoundedButton no = new RoundedButton("No");
 
         yes.addActionListener(e -> {
             rain.dispose();

@@ -17,8 +17,8 @@ public class LoaderFileDialog extends JFrame {
         setLayout(new FlowLayout());
 
         //ปุ่ม Yes/No
-        JButton yes = new JButton("Yes");
-        JButton no = new JButton("No");
+        RoundedButton yes = new RoundedButton("Yes");
+        RoundedButton no = new RoundedButton("No");
 
         yes.addActionListener(e -> {
             dispose();

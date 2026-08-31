@@ -24,11 +24,11 @@ public class MainFrame extends JFrame {
 
         gridPanel.getData().setPreferredSize(new Dimension(200, 40));
 
-        gridPanel.getTable().setBackground(Color.decode("#89CFEF"));
-        gridPanel.getData().setBackground(Color.decode("#89CFEF"));
+        gridPanel.getTable().setBackground(Color.decode("#F8FAFC"));
+        gridPanel.getData().setBackground(Color.decode("#E2E8F0"));
 
-        gridPanel.getTable().setBorder(
-            BorderFactory.createLineBorder(Color.decode("#000000"), 1)
+        gridPanel.getData().setBorder(
+            BorderFactory.createLineBorder(Color.decode("#E2E8F0"), 2)
         );
 
         add(gridPanel.getTable(), BorderLayout.CENTER);

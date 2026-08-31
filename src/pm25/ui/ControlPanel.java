@@ -2,43 +2,43 @@ package pm25.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.UIManager;
 import pm25.model.CityGrid;
 
 public class ControlPanel {
 
-    //แผงควยคุมด้านล่าง
+    //แผงควบคุมด้านล่าง
     ControlPanel(GridPanel gridPanel, CityGrid cityGrid) {
         SetPeopleDialog setPeopleDialog = new SetPeopleDialog();
         NatureRainDialog natureRainDialog = new NatureRainDialog();
         LoaderFileDialog loaderFileDialog = new LoaderFileDialog();
 
         //ปุ่ม setPeople
-        JButton setPeople = new JButton("Set People");
+        RoundedButton setPeople = new RoundedButton("Set People");
         setPeople.setPreferredSize(new Dimension(140, 25));
+        setPeople.setBackground(Color.decode("#FFFFFF"));
 
-        //เพิ่ม Listener
         setPeople.addActionListener(e -> {
             setPeopleDialog.choiceDialog(cityGrid, gridPanel);
         });
 
         //ปุ่มฝนธรรมชาติ
-        JButton nature = new JButton("Nature Rain");
+        RoundedButton nature = new RoundedButton("Nature Rain");
         nature.setPreferredSize(new Dimension(140, 25));
+        nature.setBackground(Color.decode("#FFFFFF"));
 
-        //เพิ่ม Listener
         nature.addActionListener(e -> {
             natureRainDialog.natureDialog(cityGrid, gridPanel);
         });
 
         //ปุ่มฝนเทียม
-        JButton pseudo = new JButton("Pseudo rain(off)");
+        RoundedButton pseudo = new RoundedButton("Pseudo rain(off)");
         pseudo.setPreferredSize(new Dimension(140, 25));
+        pseudo.setBackground(Color.decode("#FFFFFF"));
         gridPanel.setPseudoButton(pseudo);
-        
-        //เพิ่ม Listener
+
         pseudo.addActionListener(e -> {
             if (!cityGrid.isPseudoOn()) {
                 cityGrid.setPseudoOn(true);
@@ -47,17 +47,23 @@ public class ControlPanel {
             } else {
                 cityGrid.setPseudoOn(false);
                 pseudo.setText("Pseudo rain(off)");
-                pseudo.setBackground(UIManager.getColor("Button.background"));
+                pseudo.setBackground(Color.decode("#FFFFFF"));
             }
         });
 
-        //ปุ่มโหลดไฟล์ทับ
-        JButton load = new JButton("Loader File");
+        //ปุ่มโหลดไฟล์
+        RoundedButton load = new RoundedButton("Open File");
         load.setPreferredSize(new Dimension(140, 25));
+        load.setBackground(Color.decode("#FFFFFF"));
 
         load.addActionListener(e -> {
             loaderFileDialog.loaderFile(cityGrid, gridPanel);
         });
+
+        setPeople.setBorder(BorderFactory.createLineBorder(Color.decode("#CBD5E1"), 1));
+        nature.setBorder(BorderFactory.createLineBorder(Color.decode("#CBD5E1"), 1));
+        pseudo.setBorder(BorderFactory.createLineBorder(Color.decode("#CBD5E1"), 1));
+        load.setBorder(BorderFactory.createLineBorder(Color.decode("#CBD5E1"), 1));
 
         //เพิ่มเข้า JPanel data
         gridPanel.getData().add(setPeople);

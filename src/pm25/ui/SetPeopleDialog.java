@@ -13,8 +13,8 @@ public class SetPeopleDialog extends JFrame {
         choice.setSize(300, 100);
         choice.setLayout(new FlowLayout());
 
-        JButton random = new JButton("Random");
-        JButton fixed = new JButton("Fixed");
+        RoundedButton random = new RoundedButton("Random");
+        RoundedButton fixed = new RoundedButton("Fixed");
 
         random.addActionListener(e -> {
             choice.dispose();
@@ -45,7 +45,7 @@ public class SetPeopleDialog extends JFrame {
         randomFrame.add(new JLabel("Max:"));
         JTextArea max = new JTextArea(1, 10);
         randomFrame.add(max);
-        JButton random = new JButton("Apply");
+        RoundedButton random = new RoundedButton("Apply");
         JLabel randomError = new JLabel();
         randomError.setForeground(Color.RED);
 
@@ -64,7 +64,7 @@ public class SetPeopleDialog extends JFrame {
                 cityGrid.setSickPeople();
                 cityGrid.setGoodPeople();
                 cityGrid.copyData();
-                gridPanel.refreshColor();
+                gridPanel.refreshColor();   
                 randomFrame.dispose();
             } catch (NumberFormatException exception) {
                 randomError.setText("Letter cant input, please enter a whole number");
@@ -88,7 +88,7 @@ public class SetPeopleDialog extends JFrame {
         fixedFrame.add(new JLabel("Value:"));
         JTextArea ta = new JTextArea(1, 10);
         fixedFrame.add(ta);
-        JButton fixed = new JButton("Apply");
+        RoundedButton fixed = new RoundedButton("Apply");
         JLabel fixedError = new JLabel();
         fixedError.setForeground(Color.RED);
 

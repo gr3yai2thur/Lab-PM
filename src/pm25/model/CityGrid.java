@@ -110,10 +110,10 @@ public class CityGrid {
     public Color getColor(int row, int col) {
         int pmValue = pm25.get(row).get(col);
 
-        if (pmValue >= 151) return Color.RED;
-        else if (pmValue >= 101) return Color.ORANGE;
-        else if (pmValue >= 51)  return Color.YELLOW;
-        else return Color.GREEN;
+        if (pmValue >= 151) return Color.decode("#E53935");
+        else if (pmValue >= 101) return Color.decode("#FF9800");
+        else if (pmValue >= 51)  return Color.decode("#FFD54F");
+        else return Color.decode("#8BC34A");
     }
 
     //set จำนวนคนแบบกำหนด
