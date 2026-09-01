@@ -25,10 +25,7 @@ public class dataFileLoader {
             BufferedReader bfr = new BufferedReader(new FileReader(filePath));
             while ((line = bfr.readLine()) != null) {
                 String[] msg = line.trim().split("\\s+");
-
-                if (i == 0) {
-                    cols = msg.length;
-                }
+                cols = Math.max(cols, msg.length);
 
                 ArrayList<Integer> row = new ArrayList<>();
                 for (int j = 0; j < msg.length; j++) {

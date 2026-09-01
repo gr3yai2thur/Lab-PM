@@ -9,17 +9,14 @@ import javax.swing.*;
 
 public class DetailDialog extends JFrame {
 
-    //ข้อมูลต่างๆหลังกดปุ่ม
     public DetailDialog(CityGrid cityGrid, GridPanel gridPanel, int i, int j) {
         setTitle("Details");
         setSize(560, 380);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        //แผงรายละเอียด
         JTextArea ta = new JTextArea();
 
-        //รูปภาพ
         JLabel imageLabel = new JLabel();
 
         ta.setEditable(false);

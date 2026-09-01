@@ -11,7 +11,6 @@ public class GridPanel {
     private JPanel table = new JPanel();
     private JPanel data = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
-    //ให้ CityGrid ที่ใส่มาเป็นตัวเดียวกับ Attribute ของ Class
     public GridPanel(CityGrid cityGrid) {
         this.cityGrid = cityGrid;
     }
@@ -37,15 +36,12 @@ public class GridPanel {
         pseudoButton.setBackground(UIManager.getColor("Button.background"));
     }
 
-    //สร้างตารางปุ่ม
     public void buildTable() {
 
-        //เช็คจำนวนปุ่มบนจอตอน Reset File
         if (table.getComponentCount() > 0) {
             table.removeAll();
         }
 
-        //เก็บปุ่มไว้ใน Array ตามจำนวนบรรทัดและแถวของไฟล์
         buttons = new JButton[cityGrid.getRows()][cityGrid.getCols()];
         table.setLayout(new GridLayout(cityGrid.getRows(), cityGrid.getCols(), 2, 2));
 
@@ -107,12 +103,10 @@ public class GridPanel {
 
                 buttons[i][j] = btn;
 
-                //แก้ข้อมูลเป็น ...
                 btn.setMargin(new Insets(0, 0, 0, 0));
 
                 btn.addActionListener(e -> {
 
-                    //เช็คว่าเปิด pseudo มั้ย
                     if (cityGrid.isPseudoOn()) {
                         if (cityGrid.getPeople(r, c) == 0) {
                             new PseudoAlert();
@@ -125,8 +119,6 @@ public class GridPanel {
                         cityGrid.setSickPercent();
                         cityGrid.setSickPeople();
                         cityGrid.setGoodPeople();
-                        // cityGrid.setPseudoOn(false);
-                        // resetPseudoButton();
                         refreshPM25();
                         refreshColor();
                     } else {
@@ -140,7 +132,6 @@ public class GridPanel {
         table.repaint();
     }
 
-    //refresh ค่าฝุ่นหลังจากทำ event ต่างๆ
     public void refreshPM25() {
         for (int i = 0; i < cityGrid.getRows(); i++) {
             for (int j = 0; j < cityGrid.getCols(); j++) {
@@ -150,7 +141,6 @@ public class GridPanel {
         }
     }
 
-    //refresh สีปุ่มหลังจากทำ event ต่างๆ
     public void refreshColor() {
         for (int i = 0; i < cityGrid.getRows(); i++) {
             for (int j = 0; j < cityGrid.getCols(); j++) {

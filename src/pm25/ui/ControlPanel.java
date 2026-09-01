@@ -13,7 +13,6 @@ public class ControlPanel {
         NatureRainDialog natureRainDialog = new NatureRainDialog();
         LoaderFileDialog loaderFileDialog = new LoaderFileDialog();
 
-        //ปุ่ม setPeople
         RoundedButton setPeople = new RoundedButton("Set People");
         setPeople.setPreferredSize(new Dimension(140, 25));
         setPeople.setBackground(Color.decode("#FFFFFF"));
@@ -22,7 +21,6 @@ public class ControlPanel {
             setPeopleDialog.choiceDialog(cityGrid, gridPanel);
         });
 
-        //ปุ่มฝนธรรมชาติ
         RoundedButton nature = new RoundedButton("Nature Rain");
         nature.setPreferredSize(new Dimension(140, 25));
         nature.setBackground(Color.decode("#FFFFFF"));
@@ -31,7 +29,6 @@ public class ControlPanel {
             natureRainDialog.natureDialog(cityGrid, gridPanel);
         });
 
-        //ปุ่มฝนเทียม
         RoundedButton pseudo = new RoundedButton("Pseudo rain(off)");
         pseudo.setPreferredSize(new Dimension(140, 25));
         pseudo.setBackground(Color.decode("#FFFFFF"));
@@ -49,7 +46,6 @@ public class ControlPanel {
             }
         });
 
-        //ปุ่มโหลดไฟล์
         RoundedButton load = new RoundedButton("Open File");
         load.setPreferredSize(new Dimension(140, 25));
         load.setBackground(Color.decode("#FFFFFF"));
@@ -63,7 +59,6 @@ public class ControlPanel {
         pseudo.setBorder(BorderFactory.createLineBorder(Color.decode("#CBD5E1"), 1));
         load.setBorder(BorderFactory.createLineBorder(Color.decode("#CBD5E1"), 1));
 
-        //เพิ่มเข้า JPanel data
         gridPanel.getData().add(setPeople);
         gridPanel.getData().add(pseudo);
         gridPanel.getData().add(nature);

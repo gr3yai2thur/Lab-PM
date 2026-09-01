@@ -82,7 +82,6 @@ public class CityGrid {
         return B4goodPP.get(row).get(col);
     }
 
-    //โหลดข้อมูลลง pm55 และ set people เป็น 0
     public void loadDataRow(ArrayList<Integer> row) {
         pm25.add(new ArrayList<>(row));
         ArrayList<Integer> peopleRow = new ArrayList<>();
@@ -92,7 +91,6 @@ public class CityGrid {
         people.add(peopleRow);
     }
 
-    //ล้างข้อมูลใน Array ตอนโหลดไฟล์กันข้อมูลทับ
     public void clearLoadedData() {
         isPeopleSet = false;
         pm25.clear();
@@ -103,13 +101,11 @@ public class CityGrid {
         resetCopyData();
     }
 
-    //set ขนาดของ Array ตามขนาดไฟล์(ใน Loop)
     public void setGridSize(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
     }
 
-    //ดึงค่าสีตามจำนวนฝุ่น
     public Color getColor(int row, int col) {
         int pmValue = pm25.get(row).get(col);
 
@@ -120,7 +116,6 @@ public class CityGrid {
         else return Color.decode("#FFFFFF");
     }
 
-    //set จำนวนคนแบบกำหนด
     public void setPeople(int amount) {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -130,7 +125,6 @@ public class CityGrid {
         setPeopleSet(true);
     }
 
-    //set จำนวนคนแบบสุ่ม
     public void setPeople(int min, int max) {
         Random rnd = new Random();
         for (int i = 0; i < rows; i++) {
@@ -142,7 +136,6 @@ public class CityGrid {
         setPeopleSet(true);
     }
 
-    //ฝนธรรมชาติ
     public void natureRain(GridPanel gridPanel) { 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -157,7 +150,6 @@ public class CityGrid {
         }
     }
 
-    //ฝนเทียม
     public void pseudoRain(int centerRow, int centerCol) {
         if (pm25.get(centerRow).get(centerCol) == -1) {
             return;
@@ -167,16 +159,16 @@ public class CityGrid {
             for (int j = 0; j < cols; j++) {
 
                 int pmValue = pm25.get(i).get(j);
-                if(pmValue == -1) continue; // ข้ามช่องที่เป็น -1 ในพื้นที่รอบๆ
+                if(pmValue == -1) continue;
                 
                 int distance = Math.max(Math.abs(i - centerRow), Math.abs(j - centerCol));
                 int reductionPercent = 0;
 
-                if (distance == 0) { //ช่องที่กด
+                if (distance == 0) {
                     reductionPercent = 50;
-                } else if (distance == 1) { //ช่องรอบปุ่มที่กด
+                } else if (distance == 1) {
                     reductionPercent = 25; 
-                } else if (distance == 2) { //ช่องรอบนอก
+                } else if (distance == 2) {
                     reductionPercent = 10;
                 }
 
@@ -189,7 +181,6 @@ public class CityGrid {
         }
     }
 
-    //set จำนวนเปอร์เซ็นต์ผู้ป่วย
     public void setSickPercent() {
         Random rnd = new Random();
         sickP.clear();
@@ -210,7 +201,6 @@ public class CityGrid {
         }
     }
 
-    //set จำนวนผู้ป่วย
     public void setSickPeople(){
         sickPP.clear();
         for (int i = 0; i < rows; i++) {
@@ -223,7 +213,6 @@ public class CityGrid {
         }
     }
 
-    //set จำนวนคนสุขภาพดี
     public void setGoodPeople(){
         goodPP.clear();
         for (int i = 0; i < rows; i++) {
@@ -236,7 +225,6 @@ public class CityGrid {
         }
     }
 
-    //Copy ข้อมูลลง Before เพื่อใช้เปรียบเทียบ
     public void copyData(){
         if (hasCopy) {
             return;
@@ -270,7 +258,6 @@ public class CityGrid {
         hasCopy = true;
     }
 
-    //ล้างข้อมูล Copy ตอนโหลดไฟล์ใหม่กันข้อมูลทับ
     public void resetCopyData() {
         hasCopy = false;
         B4pm25.clear();
